@@ -18,6 +18,7 @@
   - migrations
   - templates/todo_lists
     - `create.html`
+    - `delete.html`
     - `index.html`
     - `new.html`
   - `admin.py`
@@ -89,3 +90,32 @@ def create(requset):
 ### 5. index.html
 
 - 테이블의 모든 값을 보여주기 위해 for를 사용해 값을 하나씩 보여줄 수 있게 만들었다. 
+
+### 
+
+## delete 기능 추가
+
+![image-20220309143752251](README.assets/image-20220309143752251.png)
+
+### 1. views.py
+
+```python
+def delete(request, pk):
+
+    todo = Todo.objects.get(pk=pk)
+    todo.delete()
+    
+    return redirect('todo_lists:index')
+```
+
+- delete 함수의 인자로 들어온 pk 값과 테이블의 pk 값이 같은 경우 delete를 하도록 만 들어주었다. 
+
+### 2. index.html
+
+```html
+<button type="button" class="btn btn-danger">
+	<a href="{% url 'todo_lists:delete' list.pk %}" class="text-decoration-none" style="color:white;">Del</a>
+</button>
+```
+
+- button 안에 a태그를 넣어 버튼을 클릭하면 delete 함수를 호출하고 인자 값으로 pk값을 전달해준다.

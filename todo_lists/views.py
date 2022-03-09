@@ -27,3 +27,9 @@ def create(requset):
     return redirect('todo_lists:index')
 
 
+def delete(request, pk):
+
+    todo = Todo.objects.get(pk=pk)
+    todo.delete()
+    
+    return redirect('todo_lists:index')
