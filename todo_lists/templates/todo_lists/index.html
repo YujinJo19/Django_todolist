@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header class="m-3">
+  <h1 class="fw-bold d-inline ">To-do List</h1>
+  <h4 class="d-inline mx-3">with Django</h4>
+  <hr>
+</header>
+
+<section class="m-5">
+  {% for list in todo %}
+  <div class="form-check m-3">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+      {{ list.pk }}. {{ list.content }}
+    </label>
+  </div>
+  <hr>
+  {% endfor %}
+</section>
+
+
+{% endblock content %}

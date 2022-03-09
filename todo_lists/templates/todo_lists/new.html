@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header class="m-3">
+  <h1 class="fw-bold d-inline ">To-do List</h1>
+  <h4 class="d-inline mx-3">with Django</h4>
+  <hr>
+</header>
+
+<section class="m-5">
+  <form action="{% url 'todo_lists:create' %}" method="POST">
+    {% csrf_token %}
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="메모할 내용을 적어주세요" aria-label="Recipient's username" aria-describedby="button-addon2" name="content">
+      <button class="btn btn-outline-secondary">메모하기!</button>
+    </div>
+  </form>
+</section>
+
+
+{% endblock content %}
